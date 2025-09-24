@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbdxb5agj2toy"]
+
+[ext_resource type="Script" uid="uid://b7khojifpdguu" path="res://Personagem/personagem.gd" id="1_arawn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fvc3i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_arawn"]
+
+[node name="Personagem" type="CharacterBody3D"]
+script = ExtResource("1_arawn")
+
+[node name="AncoraCam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="AncoraCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9088725, 0)
+
+[node name="Camera3D" type="Camera3D" parent="AncoraCam/SpringArm3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fvc3i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_arawn")
